@@ -1,3 +1,4 @@
+report_id, ok, dns, tcp_ip, http-diff, http-failure, confirmed, error, no_data, http(legacy)
 20260304T034739Z_webconnectivity_KR_3786_n4_AIor3ENmw2zilzrz,1592,476,37,8,31,32,45,0,0
 20260306T053946Z_webconnectivity_KR_3786_n4_uBljfQbWCFF90Gct,1533,558,34,2,23,24,47,0,0
 20260309T044236Z_webconnectivity_KR_3786_n4_nMx4hOhPSsT2ccHC,1537,556,37,4,22,24,41,0,0

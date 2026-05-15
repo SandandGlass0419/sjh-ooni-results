@@ -1,3 +1,4 @@
+report_id, ok, dns, http-diff, http-failure, confirmed, error, no_data, http(legacy)
 20260407T101908Z_webconnectivity_KR_3786_n4_5ooi8R3o9b6ECTSx,1850,34,65,128,35,38,71,0,0
 20260409T064737Z_webconnectivity_KR_3786_n4_HKWb9OooueBJo2b1,1871,32,59,125,33,38,63,0,0
 20260414T071006Z_webconnectivity_KR_3786_n4_G33V59elG2calpwx,1860,39,58,125,31,38,65,5,0

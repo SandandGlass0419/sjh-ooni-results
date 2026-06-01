@@ -10,6 +10,7 @@ ID_LIST_PATH = r""
 def main():   
     for (report_id, expected) in get_report_id_list(ID_LIST_PATH):
         oonitool = OONIExport(report_id, expected, OUT_DIR)
+        oonitool.update_export_data()
         oonitool.export_data_csv()
 
 def get_report_id_list(report_id_list_path):
@@ -22,6 +23,13 @@ def get_report_id_list(report_id_list_path):
             report_id_list.append((row[0], int(row[1]))) # report_id, expected_count
             
     return report_id_list
+
+def fallback(start_time, end_time, report_id, expected, OUT_DIR): # start_time = actual - 1sec
+    oonitool = OONIExport(report_id, expected, OUT_DIR)
+    
+    url = f"https://api.ooni.io/api/v1/measurements?test_name=web_connectivity&probe_cc=KR&probe_asn=AS3786&order=asc&limit=3000&since={start_time}&until={end_time}"    
+    oonitool.export_data = oonitool.fetch_json(url).get("results")
+    oonitool.export_data_csv()
     
 class OONIExport:
     def __init__(self, report_id, expected_count, out_dir):
@@ -102,8 +110,6 @@ class OONIExport:
 
 # write indivisual results, append stat data to stats.csv
     def export_data_csv(self):
-        self.update_export_data()
-        
         print(f"Exporting {len(self.export_data)} entries.")
         
         report_path = self.out_dir + self.report_id + ".csv"
